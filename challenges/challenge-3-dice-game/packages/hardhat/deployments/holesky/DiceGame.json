@@ -1,0 +1,155 @@
+{
+  "address": "0x4b3afd593ad8001C39AC21715A29d78F6fCC0A86",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "payable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "NotEnoughEther",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "roll",
+          "type": "uint256"
+        }
+      ],
+      "name": "Roll",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "winner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Winner",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "nonce",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "prize",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rollTheDice",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    }
+  ],
+  "transactionHash": "0x0c1472f1d2c7d578b6bd180f0c6a70b447e904e4769fa9fe7f21a5d63bd2434c",
+  "receipt": {
+    "to": null,
+    "from": "0x84282d428C3Df6F5EdF677Ff71E16bcb55494610",
+    "contractAddress": "0x4b3afd593ad8001C39AC21715A29d78F6fCC0A86",
+    "transactionIndex": 12,
+    "gasUsed": "277333",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x2b925ccdcb1c7620033f6f93a36f7abcda67ba77f9c3a9f601e45320ca69fcc2",
+    "transactionHash": "0x0c1472f1d2c7d578b6bd180f0c6a70b447e904e4769fa9fe7f21a5d63bd2434c",
+    "logs": [],
+    "blockNumber": 2296272,
+    "cumulativeGasUsed": "1642359",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 2,
+  "solcInputHash": "7f4455b1cc77c2693f2c0b2d298a06f8",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"payable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"NotEnoughEther\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"roll\",\"type\":\"uint256\"}],\"name\":\"Roll\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"winner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Winner\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"nonce\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"prize\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rollTheDice\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/DiceGame.sol\":\"DiceGame\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/DiceGame.sol\":{\"content\":\"pragma solidity >=0.8.0 <0.9.0; //Do not change the solidity version as it negativly impacts submission grading\\n\\n//SPDX-License-Identifier: MIT\\n\\n// import \\\"hardhat/console.sol\\\";\\n\\ncontract DiceGame {\\n\\tuint256 public nonce = 0;\\n\\tuint256 public prize = 0;\\n\\n\\terror NotEnoughEther();\\n\\n\\tevent Roll(address indexed player, uint256 amount, uint256 roll);\\n\\tevent Winner(address winner, uint256 amount);\\n\\n\\tconstructor() payable {\\n\\t\\tresetPrize();\\n\\t}\\n\\n\\tfunction resetPrize() private {\\n\\t\\tprize = ((address(this).balance * 10) / 100);\\n\\t}\\n\\n\\tfunction rollTheDice() public payable {\\n\\t\\tif (msg.value < 0.002 ether) {\\n\\t\\t\\trevert NotEnoughEther();\\n\\t\\t}\\n\\n\\t\\tbytes32 prevHash = blockhash(block.number - 1);\\n\\t\\tbytes32 hash = keccak256(\\n\\t\\t\\tabi.encodePacked(prevHash, address(this), nonce)\\n\\t\\t);\\n\\t\\tuint256 roll = uint256(hash) % 16;\\n\\n\\t\\t// console.log(\\\"\\\\t\\\", \\\"   Dice Game Roll:\\\", roll);\\n\\n\\t\\tnonce++;\\n\\t\\tprize += ((msg.value * 40) / 100);\\n\\n\\t\\temit Roll(msg.sender, msg.value, roll);\\n\\n\\t\\tif (roll > 5) {\\n\\t\\t\\treturn;\\n\\t\\t}\\n\\n\\t\\tuint256 amount = prize;\\n\\t\\t(bool sent, ) = msg.sender.call{ value: amount }(\\\"\\\");\\n\\t\\trequire(sent, \\\"Failed to send Ether\\\");\\n\\n\\t\\tresetPrize();\\n\\t\\temit Winner(msg.sender, amount);\\n\\t}\\n\\n\\treceive() external payable {}\\n}\\n\",\"keccak256\":\"0xf9b23763d41feabf07f3b08124c2c4c5c6c279b56825fcc1258350b690c9dea5\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60806040526000808055600155610014610019565b610082565b606461002647600a610035565b6100309190610060565b600155565b808202811582820484141761005a57634e487b7160e01b600052601160045260246000fd5b92915050565b60008261007d57634e487b7160e01b600052601260045260246000fd5b500490565b610394806100916000396000f3fe6080604052600436106100385760003560e01c80637d789dee14610044578063affed0e01461004e578063e3ac5d261461007657600080fd5b3661003f57005b600080fd5b61004c61008c565b005b34801561005a57600080fd5b5061006460005481565b60405190815260200160405180910390f35b34801561008257600080fd5b5061006460015481565b66071afd498d00003410156100b457604051638a0d377960e01b815260040160405180910390fd5b60006100c16001436102c4565b409050600081306000546040516020016101009392919092835260609190911b6bffffffffffffffffffffffff19166020830152603482015260540190565b60408051601f198184030181529190528051602090910120905060006101276010836102f3565b600080549192508061013883610307565b909155506064905061014b346028610320565b6101559190610337565b60016000828254610166919061034b565b9091555050604080513481526020810183905233917f61cfee61b80d296eb67d23740a2278ba7f3d857fe9aa27f1ed9fe4882e254360910160405180910390a260058111156101b457505050565b600154604051600090339083908381818185875af1925050503d80600081146101f9576040519150601f19603f3d011682016040523d82523d6000602084013e6101fe565b606091505b505090508061024a5760405162461bcd60e51b81526020600482015260146024820152732330b4b632b2103a379039b2b7321022ba3432b960611b604482015260640160405180910390fd5b610252610292565b60408051338152602081018490527f9c2270628a9b29d30ae96b6c4c14ed646ee134febdce38a5b77f2bde9cea2e20910160405180910390a15050505050565b606461029f47600a610320565b6102a99190610337565b600155565b634e487b7160e01b600052601160045260246000fd5b818103818111156102d7576102d76102ae565b92915050565b634e487b7160e01b600052601260045260246000fd5b600082610302576103026102dd565b500690565b600060018201610319576103196102ae565b5060010190565b80820281158282048414176102d7576102d76102ae565b600082610346576103466102dd565b500490565b808201808211156102d7576102d76102ae56fea2646970667358221220704a9028ff12c43bf8b3962456c07c78d9cdeddf8bc61173e8bf6d43589456c964736f6c63430008110033",
+  "deployedBytecode": "0x6080604052600436106100385760003560e01c80637d789dee14610044578063affed0e01461004e578063e3ac5d261461007657600080fd5b3661003f57005b600080fd5b61004c61008c565b005b34801561005a57600080fd5b5061006460005481565b60405190815260200160405180910390f35b34801561008257600080fd5b5061006460015481565b66071afd498d00003410156100b457604051638a0d377960e01b815260040160405180910390fd5b60006100c16001436102c4565b409050600081306000546040516020016101009392919092835260609190911b6bffffffffffffffffffffffff19166020830152603482015260540190565b60408051601f198184030181529190528051602090910120905060006101276010836102f3565b600080549192508061013883610307565b909155506064905061014b346028610320565b6101559190610337565b60016000828254610166919061034b565b9091555050604080513481526020810183905233917f61cfee61b80d296eb67d23740a2278ba7f3d857fe9aa27f1ed9fe4882e254360910160405180910390a260058111156101b457505050565b600154604051600090339083908381818185875af1925050503d80600081146101f9576040519150601f19603f3d011682016040523d82523d6000602084013e6101fe565b606091505b505090508061024a5760405162461bcd60e51b81526020600482015260146024820152732330b4b632b2103a379039b2b7321022ba3432b960611b604482015260640160405180910390fd5b610252610292565b60408051338152602081018490527f9c2270628a9b29d30ae96b6c4c14ed646ee134febdce38a5b77f2bde9cea2e20910160405180910390a15050505050565b606461029f47600a610320565b6102a99190610337565b600155565b634e487b7160e01b600052601160045260246000fd5b818103818111156102d7576102d76102ae565b92915050565b634e487b7160e01b600052601260045260246000fd5b600082610302576103026102dd565b500690565b600060018201610319576103196102ae565b5060010190565b80820281158282048414176102d7576102d76102ae565b600082610346576103466102dd565b500490565b808201808211156102d7576102d76102ae56fea2646970667358221220704a9028ff12c43bf8b3962456c07c78d9cdeddf8bc61173e8bf6d43589456c964736f6c63430008110033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 147,
+        "contract": "contracts/DiceGame.sol:DiceGame",
+        "label": "nonce",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 150,
+        "contract": "contracts/DiceGame.sol:DiceGame",
+        "label": "prize",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
